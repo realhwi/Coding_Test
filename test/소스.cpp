@@ -5,29 +5,32 @@
 #include <ctime>
 #include <cstring>
 #include <vector>
+#include <stdlib.h>
 
 int main() {
 
-    int arr[101] = { 0, }; // 바구니 배열 초기화 
-    int n,m; // n은 바구니,m은 몇번 바꿀 것인지 횟수 
-    scanf("%d %d",&n,&m);
+    // 과목 개수 n, 점수 배열 m, 최대점수 max
+    int n,max=0;
+    scanf("%d",&n);
 
-    
-    for (int i = 1; i <= n; i++) {
-        arr[i]= i; // 바구니에 공 1~n까지 채우기 
+    // 동적 배열 
+    int* m = (int*)malloc(n * sizeof(int));
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &m[i]);
+        if (m[i] > max) {
+            max = m[i];
+        }
     }
 
-    int r1,r2,swap;
-    for (int i = 0; i < m; i++) {
-        scanf("%d %d", &r1, &r2);
-        swap = arr[r1];
-        arr[r1] = arr[r2];
-        arr[r2] = swap; 
+    // 평균 값 avg 
+    float avg =0;
+    for (int i = 0; i < n; i++) {
+        // 배열 순회하면서 avg에 우측 값 계산 후 순회할때마다 더하기 
+        avg += (float)m[i] / max * 100;
     }
 
-    for (int i = 1; i <= n; i++) {
-        printf("%d ",arr[i]);
-    }
+    printf("%f\n",avg/n);
 
     return 0;
 }
