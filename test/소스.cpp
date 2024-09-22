@@ -9,14 +9,23 @@
 
 int main() {
 
-    //단어 s와 정수 i가 주어졌을 때 s의 i번째 출력
-    char s[100];
-    int i;
+    // 단어 길이 출력 널체크로 하기
+    char input[100] = { 0 };
+    scanf("%s", input); 
 
-    scanf("%s",s);
-    scanf("%d",&i);
+    int count = 0;
+    for (int i = 0; input[i] != '\0'; i++) {
+        count++;
+    }
+    printf("%d\n", count);
 
-    printf("%c",s[i-1]); //인덱스 0부터니까 
+
+    // 단어길이 출력 string 변수길이 사용하는 것 활용하기 
+    char input1[100];
+    scanf("%s", input1);
+
+    printf("%d",strlen(input1));
 
     return 0;
+
 }
