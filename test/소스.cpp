@@ -1,31 +1,28 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
 #include <cstring>
 #include <vector>
 #include <stdlib.h>
+#include <stdio.h>
+
 
 int main() {
+    
+    int n;//ëª‡ë²ˆ ì…ë ¥í• ì§€
+    char input[100];
 
-    // ´Ü¾î ±æÀÌ Ãâ·Â ³ÎÃ¼Å©·Î ÇÏ±â
-    char input[100] = { 0 };
-    scanf("%s", input); 
+    scanf("%d",&n);
 
-    int count = 0;
-    for (int i = 0; input[i] != '\0'; i++) {
-        count++;
+
+    while (n>0) // ì—¬ê¸°ì„œ n--í•´ë„ë¨, në²ˆê¹Œì§€ ë°˜ë³µ 
+    {
+        scanf("%s",input); // ì…ë ¥ë°›ì€ ë¬¸ìì—´ì„ ë°°ì—´ inputì— ì €ì¥ 
+
+        printf("%c%c\n",input[0],input[strlen(input)-1]); // ë§ˆì§€ë§‰ nullê¹Œì§€ êµ¬í•˜ëŠ” ê²ƒì´ strlenì¸ë°, -1 í•´ì£¼ë©´ ë§ˆì§€ë§‰ ë¬¸ì ì¶œë ¥ë¨  
+        n--; //nê°ì†Œ 
     }
-    printf("%d\n", count);
-
-
-    // ´Ü¾î±æÀÌ Ãâ·Â string º¯¼ö±æÀÌ »ç¿ëÇÏ´Â °Í È°¿ëÇÏ±â 
-    char input1[100];
-    scanf("%s", input1);
-
-    printf("%d",strlen(input1));
-
+    
     return 0;
-
 }
