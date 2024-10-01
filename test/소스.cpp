@@ -10,25 +10,20 @@
 
 int main() {
 
-    char input[1000];
-    int count =0,len;
+    int num1,num2;
+    scanf("%d %d",&num1,&num2);
 
-    scanf("%[^\n]",input);
-    len = strlen(input);
+    // num%10은 마지막자리*100
+    // num/10은 10의자리부터 남음, 여기서 한번 더 %10을 하면 두번째 자리만 남음. *10해서 두번째 자리 만들기 
+    // num1 / 100은 마지막 자리만 남음 
+    num1 = (num1%10)*100 + ((num1/10)%10)*10 + (num1/100);
+    num2 = (num2 % 10) * 100 + ((num2 / 10) % 10) * 10 + (num2 / 100);
 
-    //만약 첫번째 입력이 공백일 경우 0을 출력
-    if (len == 1 && input[0] == ' ') {
-        printf("%d", count);
-
-        return 0;
+    if (num1 > num2) {
+        printf("%d\n",num1);
     }
-    // 문자열 끝 길이까지 반복하는데 공백이 있을 경우 count++
-    for (int i = 0; i < len; i++) {
-        if (input[i] == ' ') {
-            count++;
-        }
+    else {
+        printf("%d\n",num2);
     }
-    printf("%d",count+1);
-
     return 0;
 }
