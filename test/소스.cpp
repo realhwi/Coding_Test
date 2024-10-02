@@ -9,21 +9,42 @@
 
 
 int main() {
+    
+    char word[16];
+    scanf("%s", word);
+    
+    int len = strlen(word);
+    int time = 0;
 
-    int num1,num2;
-    scanf("%d %d",&num1,&num2);
-
-    // num%10은 마지막자리*100
-    // num/10은 10의자리부터 남음, 여기서 한번 더 %10을 하면 두번째 자리만 남음. *10해서 두번째 자리 만들기 
-    // num1 / 100은 마지막 자리만 남음 
-    num1 = (num1%10)*100 + ((num1/10)%10)*10 + (num1/100);
-    num2 = (num2 % 10) * 100 + ((num2 / 10) % 10) * 10 + (num2 / 100);
-
-    if (num1 > num2) {
-        printf("%d\n",num1);
+    for (int i = 0; i < len; i++) {
+        if (word[i] >= 'A' && word[i] <= 'C') {
+            time +=3;
+        }
+        else if (word[i] >= 'D' && word[i] <= 'F') {
+            time +=4;
+        }
+        else if (word[i] >= 'G' && word[i] <= 'I') {
+            time += 5;
+        }
+        else if (word[i] >= 'J' && word[i] <= 'L') {
+            time += 6;
+        }
+        else if (word[i] >= 'M' && word[i] <= 'O') {
+            time += 7;
+        }
+        else if (word[i] >= 'P' && word[i] <= 'S') {
+            time += 8;
+        }
+        else if (word[i] >= 'T' && word[i] <= 'V') {
+            time += 9;
+        }
+        else if (word[i] >= 'W' && word[i] <= 'Z') {
+            time += 10;
+        }
     }
-    else {
-        printf("%d\n",num2);
-    }
+    
+    printf("%d",time);
+
+
     return 0;
 }
