@@ -9,42 +9,26 @@
 
 
 int main() {
-    
-    char word[16];
-    scanf("%s", word);
-    
-    int len = strlen(word);
-    int time = 0;
 
-    for (int i = 0; i < len; i++) {
-        if (word[i] >= 'A' && word[i] <= 'C') {
-            time +=3;
-        }
-        else if (word[i] >= 'D' && word[i] <= 'F') {
-            time +=4;
-        }
-        else if (word[i] >= 'G' && word[i] <= 'I') {
-            time += 5;
-        }
-        else if (word[i] >= 'J' && word[i] <= 'L') {
-            time += 6;
-        }
-        else if (word[i] >= 'M' && word[i] <= 'O') {
-            time += 7;
-        }
-        else if (word[i] >= 'P' && word[i] <= 'S') {
-            time += 8;
-        }
-        else if (word[i] >= 'T' && word[i] <= 'V') {
-            time += 9;
-        }
-        else if (word[i] >= 'W' && word[i] <= 'Z') {
-            time += 10;
-        }
+    // 1번 방법. EOF는 문자열 끝을 알려줌 
+    char word;
+    while (scanf("%c", &word) != EOF) {
+        printf("%c", word);
     }
-    
-    printf("%d",time);
 
+    // 2번 방법. 1은 scanf에서 입력을 받는 동안 읽는 항목 수 
+    char word1;
 
-    return 0;
+    while (scanf("%c", &word1) == 1) {
+        printf("%c", word1);
+    }
+
+    // 3번 방법. 문자열 단위로 EOF (엔터 직전까지) 받기 
+    char word2[100];
+
+    while (scanf("%[^\n]", word2) != EOF) {
+        printf("%s\n", word2);
+        getchar();
+    }
+
 }
