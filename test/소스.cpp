@@ -9,26 +9,17 @@
 
 
 int main() {
+    
+    int W0[6]={1,1,2,2,2,8}; // 표준 체스 
+    int W1[6]={0}; // 찾은 체스 
 
-    // 1번 방법. EOF는 문자열 끝을 알려줌 
-    char word;
-    while (scanf("%c", &word) != EOF) {
-        printf("%c", word);
+    for (int i = 0; i < 6; i++) {
+        scanf("%d", &W1[i]); // 입력받기 
     }
 
-    // 2번 방법. 1은 scanf에서 입력을 받는 동안 읽는 항목 수 
-    char word1;
-
-    while (scanf("%c", &word1) == 1) {
-        printf("%c", word1);
+    for (int i = 0; i < 6; i++) {
+        printf("%d ", W0[i] - W1[i]); // 표준 개수에서 찾은 개수 뺀 차이 출력 
     }
 
-    // 3번 방법. 문자열 단위로 EOF (엔터 직전까지) 받기 
-    char word2[100];
-
-    while (scanf("%[^\n]", word2) != EOF) {
-        printf("%s\n", word2);
-        getchar();
-    }
-
+    return 0;
 }
