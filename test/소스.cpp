@@ -10,15 +10,25 @@
 
 int main() {
     
-    int W0[6]={1,1,2,2,2,8}; // 표준 체스 
-    int W1[6]={0}; // 찾은 체스 
-
-    for (int i = 0; i < 6; i++) {
-        scanf("%d", &W1[i]); // 입력받기 
+    for (int i = 0; i < 5; i++) { // i를 더하면서 5번 반복 줄바꿈 
+        for (int k = 5; k > i; k--) { // i보다 작을 때까지 공백 출력 
+            printf(" ");
+        }
+        for (int j = 0; j <= 2 * i; j++) { // 0부터 시작해서 i의 2배씩  
+            printf("*");
+        }
+        printf("\n");
     }
 
-    for (int i = 0; i < 6; i++) {
-        printf("%d ", W0[i] - W1[i]); // 표준 개수에서 찾은 개수 뺀 차이 출력 
+    for (int i = 4; i > 0; i--) { // i를 빼면서 5번 반복 줄바꿈  
+        for (int k = 5; k >= i; k--) { // i보다 작을 때까지 공백 출력 
+            printf(" ");
+        }
+        for (int j = 0; j < 2 * i - 1; j++) { // i개수를 2배만큼 * 출력, 점점 줄어듦 
+            // i 의 2배보다 -1 씩 * 출력 
+            printf("*");
+        }
+        printf("\n");
     }
 
     return 0;
