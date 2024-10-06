@@ -9,27 +9,18 @@
 
 
 int main() {
-    
-    for (int i = 0; i < 5; i++) { // i를 더하면서 5번 반복 줄바꿈 
-        for (int k = 5; k > i; k--) { // i보다 작을 때까지 공백 출력 
-            printf(" ");
-        }
-        for (int j = 0; j <= 2 * i; j++) { // 0부터 시작해서 i의 2배씩  
-            printf("*");
-        }
-        printf("\n");
-    }
+	char a[100];
+	scanf("%s", a);
 
-    for (int i = 4; i > 0; i--) { // i를 빼면서 5번 반복 줄바꿈  
-        for (int k = 5; k >= i; k--) { // i보다 작을 때까지 공백 출력 
-            printf(" ");
-        }
-        for (int j = 0; j < 2 * i - 1; j++) { // i개수를 2배만큼 * 출력, 점점 줄어듦 
-            // i 의 2배보다 -1 씩 * 출력 
-            printf("*");
-        }
-        printf("\n");
-    }
+	int len = strlen(a);
 
-    return 0;
+	for (int i = 0; i < len/2; i++) {
+		if (a[i] != a[len-i-1]) { // 문자열 중앙부터 양 문자열 같은지 점검 
+			printf("0");
+			return 0; //즉시 종료 
+		}
+	}
+	printf("1");
+
+	return 0;
 }
