@@ -10,23 +10,36 @@
 
 int main() {
 
-	char c[8][8] = { "c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z=" }; // 두 번째 차원의 크기를 지정
-	char word[100]={0};
-	scanf("%s",word);
+    // 입력받은 문자에서 중복되는 알파벳이 없어야 그룹단어임 
+    char word[101];
+    int n, count = 0;
+    scanf("%d", &n);
 
-	int count = 0;
-	for (int i = 0; i < word[i]!='0'; i++) {
-		for (int k = 0; k < 8; k++) {
-			int len = strlen(c[k]);// 패턴의 길이 
-			if (strncmp(&word[i], c[k], len) == 0) { // len길이만큼 문자열 word[i]와 c[k]를 비교 
-				i += len - 1; // 패턴 길이만큼 인덱스 건너뛰기, 한 글자 검사했으므로 한칸 덜 이동 
-				break;
-			}
-		}
-		count++; // 조건 만족하지 않으면 알파벳 하나당 글자 1개로, 만족한 조건은 패턴 길이만큼 크로아티아 문자로 
-	}
+    for (int i = 0; i < n; i++) {
+        scanf("%s", word);
 
-	printf("%d",count);
+        int isGroup = 1;
+        for (int k = 0; word[k] != '\0'; k++) {
+            // 연속된 문자는 건너뜀
+            if (k > 0 && word[k] == word[k - 1]) {
+                continue;
+            }
 
-	return 0;
+            // 이후에 같은 문자가 있는지 확인
+            for (int j = k + 1; word[j] != '\0'; j++) {
+                if (word[k] == word[j]) {
+                    isGroup = 0;
+                    break;
+                }
+            }
+        }
+
+        if (isGroup) {
+            count++;
+        }
+    }
+
+    printf("%d\n", count);
+
+    return 0;
 }
