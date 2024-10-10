@@ -10,36 +10,61 @@
 
 int main() {
 
-    // 입력받은 문자에서 중복되는 알파벳이 없어야 그룹단어임 
-    char word[101]; // 입력 문자 
-    int n; // 문자 몇번 입력할건지 
-    int count = 0; // 그룹단어 체크해서 출력할 문자
-    scanf("%d", &n);
+   // 과목명, 학점, 과목평점  
+   // 전공 평점 = 총(학점 × 과목평점)의 합 / 총 학점
+   // F는 과목평점만 0점, P는 학점에서 제외됨 
 
-    for (int i = 0; i < n; i++) {
-        scanf("%s", word);
+   char sub[100]={0}; //과목명
+   float credit; //점수
+   char grade[3]; //등급 
 
-        char a[26]={0}; // 알파벳으로 중복 체크 
-        bool isGrop = true;
+   float totalScore=0.0; // 평가 점수 
+   float totalCredit=0.0; // 총 학점 
 
-        for (int k = 0; word[k] != '\0'; k++) {  // word의 문자열 만큼 반복문 실행 
-            if(k>0 && word[k]==word[k-1]){
-                continue;// for문 루프에서 연속된 단어는 넘어가기
-            }
+   for (int i = 0; i < 20; i++) {
+       scanf("%s %f %s",sub,&credit,grade);
 
-            if (a[word[k] - 'a' == 1]) { // for 루프에서 문자 순서대로 인덱스에서 아스키값 빼줘서 인덱스 구하고 그 인덱스의 값이 1인적 있으면 루프 탈출 
-                isGrop = false;
-                break;
-            }
-            a[word[k]-'a']=1; // 현재 문자를 기록 
+       float score=0.0; // 전공 평가 점수 
 
-            if (isGrop) { // isGrop이 true 일때만 count 올리기 
-                count++;
-            }
+       // 등급에 따른 과목 평점 설정
+        if (strcmp(grade, "A+") == 0) {
+            score = 4.5;
         }
-    }
+        else if (strcmp(grade, "A0") == 0) {
+            score = 4.0;
+        }
+        else if (strcmp(grade, "B+") == 0) {
+            score = 3.5;
+        }
+        else if (strcmp(grade, "B0") == 0) {
+            score = 3.0;
+        }
+        else if (strcmp(grade, "C+") == 0) {
+            score = 2.5;
+        }
+        else if (strcmp(grade, "C0") == 0) {
+            score = 2.0;
+        }
+        else if (strcmp(grade, "D+") == 0) {
+            score = 1.5;
+        }
+        else if (strcmp(grade, "D0") == 0) {
+            score = 1.0;
+        }
+        else if (strcmp(grade, "F") == 0) {
+            score = 0.0;
+        }
+        else if (strcmp(grade, "P") == 0) {
+            // P 과목은 평점 계산에 포함하지 않음
+            continue;
+        }
+        // 총 (학점 * 과목평점)의 합 계산 
+        totalScore += credit * score;
+        // 학점 누적 = 총 학점 
+        totalCredit += credit;
+   }
 
-    printf("%d\n", count);
+   printf("%f", totalScore / totalCredit);
 
     return 0;
 }
