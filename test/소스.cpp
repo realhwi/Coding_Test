@@ -10,61 +10,35 @@
 
 int main() {
 
-   // 과목명, 학점, 과목평점  
-   // 전공 평점 = 총(학점 × 과목평점)의 합 / 총 학점
-   // F는 과목평점만 0점, P는 학점에서 제외됨 
+    int A[100][100], B[100][100];
 
-   char sub[100]={0}; //과목명
-   float credit; //점수
-   char grade[3]; //등급 
+   // 행렬 열과 행? 
+   int n,m;
 
-   float totalScore=0.0; // 평가 점수 
-   float totalCredit=0.0; // 총 학점 
+   scanf("%d %d",&n,&m);
 
-   for (int i = 0; i < 20; i++) {
-       scanf("%s %f %s",sub,&credit,grade);
-
-       float score=0.0; // 전공 평가 점수 
-
-       // 등급에 따른 과목 평점 설정
-        if (strcmp(grade, "A+") == 0) {
-            score = 4.5;
-        }
-        else if (strcmp(grade, "A0") == 0) {
-            score = 4.0;
-        }
-        else if (strcmp(grade, "B+") == 0) {
-            score = 3.5;
-        }
-        else if (strcmp(grade, "B0") == 0) {
-            score = 3.0;
-        }
-        else if (strcmp(grade, "C+") == 0) {
-            score = 2.5;
-        }
-        else if (strcmp(grade, "C0") == 0) {
-            score = 2.0;
-        }
-        else if (strcmp(grade, "D+") == 0) {
-            score = 1.5;
-        }
-        else if (strcmp(grade, "D0") == 0) {
-            score = 1.0;
-        }
-        else if (strcmp(grade, "F") == 0) {
-            score = 0.0;
-        }
-        else if (strcmp(grade, "P") == 0) {
-            // P 과목은 평점 계산에 포함하지 않음
-            continue;
-        }
-        // 총 (학점 * 과목평점)의 합 계산 
-        totalScore += credit * score;
-        // 학점 누적 = 총 학점 
-        totalCredit += credit;
+   // 행렬 A 입력 받기
+   for (int i = 0; i < n; i++) {
+       for (int j = 0; j < m; j++) {
+           scanf("%d", &A[i][j]);
+       }
    }
 
-   printf("%f", totalScore / totalCredit);
+   // 행렬 B 입력 받기
+   for (int i = 0; i < n; i++) {
+       for (int j = 0; j < m; j++) {
+           scanf("%d", &B[i][j]);
+       }
+   }
+
+   // 결과 행렬 A+B를 출력
+   for (int i = 0; i < n; i++) {
+       for (int j = 0; j < m; j++) {
+           int sum = A[i][j]+B[i][j];
+           printf("%d ", sum);
+       }
+       printf("\n");
+   }
 
     return 0;
 }
