@@ -10,22 +10,20 @@
 
 int main() {
 
-    int A[9][9]; // 입력받을 2차원 배열 
-    int max=0; // 최대값 
-    int x=-1,y=-1; //행과 열 
+    char A[5][15] = { 0, }; // 세로 5, 가로 15까지 
 
-    for (int i = 0; i < 9; i++) {
-        for (int j = 0; j < 9; j++) {
-            scanf("%d", &A[i][j]);
-            if (A[i][j] > max) {
-                max = A[i][j];
-                x = i+1;
-                y = j+1;
+    for (int i = 0; i < 5; i++) {
+        scanf("%s", A[i]); // i번째 인덱스에 두번째 인덱스 값 넣기
+    }
+
+    // 열 출력하기 (세로로 읽기)
+    for (int j = 0; j < 15; j++) { // 열 (문자열의 길이 범위)
+        for (int i = 0; i < 5; i++) { // 행 (각 단어)
+            if (A[i][j] != '\0') { // 유효한 문자만 출력 (널 문자가 아닌 경우)
+                printf("%c", A[i][j]);
             }
         }
     }
-   printf("%d\n",max);
-   printf("%d %d\n",x,y);
 
     return 0;
 }

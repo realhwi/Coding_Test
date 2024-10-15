@@ -20,6 +20,10 @@
           "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "stdio.h",
@@ -28,11 +32,8 @@
               "ViewState": "AgIAACEEAAAAAAAAAAAuwCsEAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-09-25T10:53:26.78Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -42,7 +43,7 @@
               "RelativeDocumentMoniker": "test\\\uC18C\uC2A4.cpp",
               "ToolTip": "D:\\00_git_update\\00_c_\uCF54\uB529\uD14C\uC2A4\uD2B8\\Coding_Test\\test\\\uC18C\uC2A4.cpp",
               "RelativeToolTip": "test\\\uC18C\uC2A4.cpp",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-08-21T13:16:56.282Z",
               "EditorCaption": ""
