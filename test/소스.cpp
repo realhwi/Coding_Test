@@ -10,35 +10,22 @@
 
 int main() {
 
-    int A[100][100], B[100][100];
+    int A[9][9]; // 입력받을 2차원 배열 
+    int max=0; // 최대값 
+    int x=-1,y=-1; //행과 열 
 
-   // 행렬 열과 행? 
-   int n,m;
-
-   scanf("%d %d",&n,&m);
-
-   // 행렬 A 입력 받기
-   for (int i = 0; i < n; i++) {
-       for (int j = 0; j < m; j++) {
-           scanf("%d", &A[i][j]);
-       }
-   }
-
-   // 행렬 B 입력 받기
-   for (int i = 0; i < n; i++) {
-       for (int j = 0; j < m; j++) {
-           scanf("%d", &B[i][j]);
-       }
-   }
-
-   // 결과 행렬 A+B를 출력
-   for (int i = 0; i < n; i++) {
-       for (int j = 0; j < m; j++) {
-           int sum = A[i][j]+B[i][j];
-           printf("%d ", sum);
-       }
-       printf("\n");
-   }
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            scanf("%d", &A[i][j]);
+            if (A[i][j] > max) {
+                max = A[i][j];
+                x = i+1;
+                y = j+1;
+            }
+        }
+    }
+   printf("%d\n",max);
+   printf("%d %d\n",x,y);
 
     return 0;
 }
