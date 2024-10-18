@@ -9,40 +9,28 @@
 
 
 int main() {
-    char N[100]; // B진법 수를 입력받을 배열
-    int B;       // 진법을 입력받을 변수
+    int N, B; // N은 10진 숫자, B는 진법
+    char result[100] = { 0 };  // 변환된 결과를 저장할 배열
 
-    // 입력: B진법 수 N과 진법 B
-    scanf("%s %d", N, &B);
+    scanf("%d %d", &N, &B);
 
-    int len = strlen(N); 
-    int result = 0;      
-    int pow = 1;         
-    // result는 반환값, pow는 제곱 / Z×B^0 부터 ZXB^len까지   
+    int t, index = 0;
 
-
-    // 뒤에서부터 (가장 낮은 자리부터) 순회하며 10진법으로 변환
-    for (int i = len - 1; i >= 0; i--) {
-        int value; // B진법은 10진법으로 바꾼 값 
-
-        // 현재 문자가 숫자면 해당 숫자의 값을 가져옴
-        if ('0' <= N[i] && N[i] <= '9') {
-            value = N[i] - '0';
+    while (N) {
+        t = N % B;  // n을 b로 나눈 나머지 -> 마지막 자리수부터 조건 체크해서 result의 index번으로 넣음 
+        // 나머지가 10보다 작으면 숫자, 10 이상이면 알파벳으로 변환
+        if (t < 10) {
+            result[index++] = t + '0';  // t가 10보다 작으면 숫자로 변환 0~9
         }
-        // 현재 문자가 알파벳이면 A는 10으로 시작 Z는 35로 변환
         else {
-            value = N[i] - 'A' + 10;
-        }
-
-        // 자릿수 값을 10진법으로 변환하여 누적
-        result += value * pow;
-
-        // 다음 자리의 B^지수를 위해 power를 B배 증가
-        pow *= B;
+            result[index++] = t - 10 + 'A';  // t가 10 이상이면 알파벳으로 변환 A~Z
+        }        
+        N /= B; // N을 B로 나눈 몫을 구해, 다음 자릿수를 계산. N이 0이 될 때 반복 종료.
     }
 
-    // 변환된 10진법 값 출력
-    printf("%d\n", result);
+    // 저장된 결과를 역순으로 출력
+    while (--index >= 0)
+        printf("%c", result[index]);
 
     return 0;
 }
