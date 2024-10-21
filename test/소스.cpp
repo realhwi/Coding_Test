@@ -8,29 +8,32 @@
 #include <stdio.h>
 
 
+
 int main() {
-    int N, B; // N은 10진 숫자, B는 진법
-    char result[100] = { 0 };  // 변환된 결과를 저장할 배열
+   
+   // 1달러는 100센트, 몇번 input 할건지 
+    int input; 
 
-    scanf("%d %d", &N, &B);
+    scanf("%d", &input);
 
-    int t, index = 0;
+    for (int i = 0; i < input; i++) {
+        int C;  // 거스름돈 
+        scanf("%d", &C);
 
-    while (N) {
-        t = N % B;  // n을 b로 나눈 나머지 -> 마지막 자리수부터 조건 체크해서 result의 index번으로 넣음 
-        // 나머지가 10보다 작으면 숫자, 10 이상이면 알파벳으로 변환
-        if (t < 10) {
-            result[index++] = t + '0';  // t가 10보다 작으면 숫자로 변환 0~9
-        }
-        else {
-            result[index++] = t - 10 + 'A';  // t가 10 이상이면 알파벳으로 변환 A~Z
-        }        
-        N /= B; // N을 B로 나눈 몫을 구해, 다음 자릿수를 계산. N이 0이 될 때 반복 종료.
+        int q = C / 25;  // 거스름 돈에서 쿼터를 빼고 
+        C %= 25;  // 쿼터를 제외한 나머지 저장 
+
+        int d = C / 10;  // 나머지 거스름돈에서 
+        C %= 10;  // 다임을 제외한 나머지 저장 
+
+        int n = C / 5;  // 나머지 거스름돈에서
+        C %= 5;  // 니켈을 제외한 나머지 저장 
+
+        int p = C;  // 나머지 그대로는 페니의 개수 
+
+        // 결과 출력
+        printf("%d %d %d %d\n", q, d, n, p);
     }
-
-    // 저장된 결과를 역순으로 출력
-    while (--index >= 0)
-        printf("%c", result[index]);
 
     return 0;
 }
