@@ -10,30 +10,20 @@
 
 
 int main() {
-   
-   // 1달러는 100센트, 몇번 input 할건지 
-    int input; 
+    int n;
+    scanf("%d", &n);
 
-    scanf("%d", &input);
+    int len = 2; // 초기 변의 길이는 2 (점이 4개인 상태)
 
-    for (int i = 0; i < input; i++) {
-        int C;  // 거스름돈 
-        scanf("%d", &C);
-
-        int q = C / 25;  // 거스름 돈에서 쿼터를 빼고 
-        C %= 25;  // 쿼터를 제외한 나머지 저장 
-
-        int d = C / 10;  // 나머지 거스름돈에서 
-        C %= 10;  // 다임을 제외한 나머지 저장 
-
-        int n = C / 5;  // 나머지 거스름돈에서
-        C %= 5;  // 니켈을 제외한 나머지 저장 
-
-        int p = C;  // 나머지 그대로는 페니의 개수 
-
-        // 결과 출력
-        printf("%d %d %d %d\n", q, d, n, p);
+    // N번 반복하면서 변의 길이를 증가시킴
+    for (int i = 0; i < n; i++) {
+        len = len * 2 - 1; // 각 반복마다 변의 길이가 2배가 되고, 변의 중간에 점이 추가됨
     }
+
+    // 점의 수 계산: 변의 길이의 제곱
+    int dot = len * len;
+
+    printf("%d\n", dot);
 
     return 0;
 }
