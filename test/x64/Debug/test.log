@@ -1,2 +1,2 @@
 ﻿  소스.cpp
-  test.vcxproj -> D:\00_git_update\00_c_코딩테스트\Coding_Test\x64\Debug\test.exe
+D:\00_git_update\00_c_코딩테스트\Coding_Test\test\소스.cpp(22,1): error C4700: 초기화되지 않은 'N' 지역 변수를 사용했습니다.
