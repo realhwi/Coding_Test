@@ -9,42 +9,34 @@
 
 int main() {
     
-    // 완전수의 조건 : n의 반부터 나눠지는 숫자까지의 합이 n과 같다면
-    int n;
+    int N; // 입력받을 수
+    scanf("%d",&N);
 
-    while (1)
-    {
-        scanf("%d", &n);
+    int n[100]={0}; // 소수 입력받을 배열 저장
+    int count=0; // 소수 카운트 
+    
+    for (int i = 0; i < N; i++) {
+        
+        scanf("%d",&n[i]); // 각 수를 입력받아 배열에 저장
+        int is_prime = 1; // 소수 여부를 체크할 변수 (1이면 소수, 0이면 소수가 아님)
 
-        if (n == -1) return 0;
-
-        int sum = 0; // 약수의 합을 저장 
-        int N[100] = {0}; // 약수 저장용 배열
-        int count = 0;   // 약수의 개수를 저장할 변수
-
-        // 1부터 n/2까지 반복하여 약수를 찾고 배열에 저장
-        for (int i = 1; i < n; i++) {
-            if (n % i == 0) {    // i가 n의 약수일 때
-                N[count++] = i;  // 약수를 배열에 저장하고 count 증가
-                sum += i;       // 약수의 합에 i를 더함
-            }
+        if (n[i] <= 1) { // 1 이하의 수는 소수가 아님
+            is_prime = 0;
         }
-
-        // 약수의 합이 n과 같으면 완전수
-        if (sum == n) {
-            printf("%d = ",n);
-            for (int i = 0; i < count; i++) { // 저장된 약수들을 출력
-                printf("%d",N[i]);
-                if (i < count - 1) { // 마지막 약수 뒤에 "+" 생략
-                    printf(" + ");
+        else { 
+            for (int k = 2; k * k <= n[i]; k++) {  // 2부터 n[i]의 제곱근까지 확인
+                if (n[i] % k == 0) { // 약수가 존재하면 소수가 아님
+                    is_prime = 0; 
+                    break;
                 }
             }
-            printf("\n");
         }
-        else {
-            printf("%d is NOT perfact.\n",n);
-        }
-    }
 
+        if (is_prime) { // 소수일 경우
+            count++; // 소수 개수 증가
+        }
+
+    }
+    printf("%d\n", count);
     return 0;
 }
