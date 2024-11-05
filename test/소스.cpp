@@ -8,35 +8,41 @@
 #include <stdio.h>
 
 int main() {
-    
-    int N; // 입력받을 수
-    scanf("%d",&N);
 
-    int n[100]={0}; // 소수 입력받을 배열 저장
-    int count=0; // 소수 카운트 
-    
-    for (int i = 0; i < N; i++) {
-        
-        scanf("%d",&n[i]); // 각 수를 입력받아 배열에 저장
-        int is_prime = 1; // 소수 여부를 체크할 변수 (1이면 소수, 0이면 소수가 아님)
+    int m, n; // M이 최소값, N이 최대값
+    scanf("%d %d", &m, &n);
 
-        if (n[i] <= 1) { // 1 이하의 수는 소수가 아님
-            is_prime = 0;
+    int sum = 0; // 소수들의 합
+    int min_prime = -1; // 최소 소수값, 소수가 없을 경우 대비 -1로 초기화 
+
+    for (int i = m; i <= n; i++) { // i <= n으로 수정
+        int is_prime = 1; // 소수 여부를 판별할 변수
+
+        if (i < 2) {
+            is_prime = 0; // 1 이하의 수는 소수가 아님
         }
-        else { 
-            for (int k = 2; k * k <= n[i]; k++) {  // 2부터 n[i]의 제곱근까지 확인
-                if (n[i] % k == 0) { // 약수가 존재하면 소수가 아님
-                    is_prime = 0; 
-                    break;
-                }
+
+        for (int k = 2; k * k <= i; k++) {
+            if (i % k == 0) { // i가 k로 나누어 떨어지면 소수가 아님
+                is_prime = 0;
+                break;
             }
         }
 
         if (is_prime) { // 소수일 경우
-            count++; // 소수 개수 증가
+            sum += i; // 소수의 합을 계산
+            if (min_prime == -1) {
+                min_prime = i; // 첫 번째 소수를 최소값으로 설정
+            }
         }
-
     }
-    printf("%d\n", count);
+
+    if (min_prime == -1) { // 소수가 없을 경우
+        printf("-1\n");
+    }
+    else {
+        printf("%d\n%d\n", sum, min_prime); // 소수들의 합과 최소 소수 출력
+    }
+
     return 0;
 }
