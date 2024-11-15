@@ -8,25 +8,32 @@
 
 int main() {
     
-    int n[3]={0};
-    int sum = 0;
+    int x1,x2,x3;
 
-    for (int i = 0; i < 3; i++) {
-        scanf("%d", &n[i]);
-        sum+=n[i];
-    }
+    while (1) {
+        scanf("%d %d %d", &x1, &x2, &x3);
 
-    if (sum != 180) {
-        printf("Error\n");
-    }
-    else if (n[0] == 60 && n[1] == 60 && n[2] == 60) {
-        printf("Equilateral\n");
-    }
-    else if (n[0] == n[1] || n[1] == n[2] || n[0] == n[2]) {
-        printf("Isosceles\n");
-    }
-    else {
-        printf("Scalene\n");
+        // 종료 조건
+        if (x1 == 0 && x2 == 0 && x3 == 0) {
+            break;
+        }
+
+        // 삼각형 유효성 검사
+        if ((x1 + x2 <= x3) || (x2 + x3 <= x1) || (x1 + x3 <= x2)) {
+            printf("Invalid\n");
+        }
+        // 세 변의 길이가 모두 같은 경우
+        else if (x1 == x2 && x2 == x3) {
+            printf("Equilateral\n");
+        }
+        // 두 변의 길이만 같은 경우
+        else if (x1 == x2 || x2 == x3 || x1 == x3) {
+            printf("Isosceles\n");
+        }
+        // 세 변의 길이가 모두 다른 경우
+        else {
+            printf("Scalene\n");
+        }
     }
 
     return 0;
