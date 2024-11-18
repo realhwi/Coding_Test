@@ -7,34 +7,25 @@
 #include <stdlib.h>
 
 int main() {
-    
-    int x1,x2,x3;
+    int a, b, c;
+    scanf("%d %d %d", &a, &b, &c);
 
-    while (1) {
-        scanf("%d %d %d", &x1, &x2, &x3);
-
-        // 종료 조건
-        if (x1 == 0 && x2 == 0 && x3 == 0) {
-            break;
+    // 삼각형의 조건 : 가장 긴 변 < 다른 두 변의 합
+    // 삼각형의 조건에서 벗어나면 그 변의 길이를 줄여야함 (가장 긴 변 >= 다른 두 변일 때)
+    while (a >= b + c || b >= a + c || c >= a + b) {
+        // 가장 긴 변을 찾아서 1 줄임 (조건 만족할때까지)
+        if (a >= b && a >= c) {
+            a--;
         }
-
-        // 삼각형 유효성 검사
-        if ((x1 + x2 <= x3) || (x2 + x3 <= x1) || (x1 + x3 <= x2)) {
-            printf("Invalid\n");
+        else if (b >= a && b >= c) {
+            b--;
         }
-        // 세 변의 길이가 모두 같은 경우
-        else if (x1 == x2 && x2 == x3) {
-            printf("Equilateral\n");
-        }
-        // 두 변의 길이만 같은 경우
-        else if (x1 == x2 || x2 == x3 || x1 == x3) {
-            printf("Isosceles\n");
-        }
-        // 세 변의 길이가 모두 다른 경우
         else {
-            printf("Scalene\n");
+            c--;
         }
     }
+
+    printf("%d\n", a + b + c);
 
     return 0;
 }
