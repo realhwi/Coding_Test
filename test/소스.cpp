@@ -7,13 +7,15 @@
 #include <stdio.h>
 
 int main() {
-    long long n; //제곱수 int자료형(4바이트)이 아닌 longlong으로 (8바이트)
+    long long n; 
 
-    scanf("%lld", &n); //ll형식 지정자 사용해 입력받기 
+    scanf("%lld", &n);
 
+    // 이중 반복문에서 i~n-1까지, i+1부터 n까지 반복됨, 수행 횟수 = n * (n-1) / 2
+    printf("%lld\n", (n * (n - 1)) / 2);
 
-    printf("%d\n",n*n);  // 코드 1의 수행 횟수 
-    printf("2\n");  // 시간 복잡도는 o(n제곱) = 최고차항 
+    // O(n^2)의 시간 복잡도, 최고 차항은 2
+    printf("2\n");
 
     return 0;
 }
