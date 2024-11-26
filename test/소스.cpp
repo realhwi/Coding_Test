@@ -11,11 +11,11 @@ int main() {
 
     scanf("%lld", &n);
 
-    // 이중 반복문에서 i~n-1까지, i+1부터 n까지 반복됨, 수행 횟수 = n * (n-1) / 2
-    printf("%lld\n", (n * (n - 1)) / 2);
+    // 수행 횟수 출력: n^3
+    printf("%lld\n", n * n * n);
 
-    // O(n^2)의 시간 복잡도, 최고 차항은 2
-    printf("2\n");
+    // 최고 차항의 차수 출력: 3
+    printf("3\n");
 
     return 0;
 }
