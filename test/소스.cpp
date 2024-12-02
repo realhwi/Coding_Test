@@ -5,32 +5,33 @@
 #include <cstring>
 #include <vector>
 #include <stdio.h>
-#include <stdlib.h> // 동적 배열 
+#include <stdlib.h> 
+
 
 int main() {
-    int n, m; // 카드 개수N, 최대 합M
-    scanf("%d %d", &n, &m); 
+    int n, m, sum, temp; // n= 입력, m= 생성자 sum= 분해합, temp= 자리수 계산용 변수
+    scanf("%d", &n); 
 
-    int* cards = (int*)malloc(n * sizeof(int)); // 동적 배열 할당
+    int start = n - 9 * 6; // 생성자의 최소값 계산 (n - 9 * 자리수 최대값)
+    if (start < 1) start = 1; // 생성자는 최소 1 이상
 
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &cards[i]); // 카드 숫자 입력
-    }
+    for (m = start; m < n; m++) { // start부터 n-1까지 탐색
+        sum = m; // 분해합 초기화
+        temp = m;
 
-    int max = 0; // 최대 합을 저장
+        // 자리수의 합을 계산
+        while (temp > 0) {
+            sum += temp % 10; // 마지막 자리수를 더함
+            temp /= 10;       // 숫자를 10으로 나눠 자리 이동
+        }
 
-    // 세 개의 카드 조합 모든 합을 구하기 
-    for (int i = 0; i < n - 2; i++) {
-        for (int j = i + 1; j < n - 1; j++) {
-            for (int k = j + 1; k < n; k++) {
-                int sum = cards[i] + cards[j] + cards[k]; 
-                if (sum <= m && sum > max) { // 조건 M이하까지 
-                    max = sum;
-                }
-            }
+        // 분해합이 N과 같다면 생성자 출력 후 종료
+        if (sum == n) {
+            printf("%d\n", m);
+            return 0;
         }
     }
 
-    printf("%d\n", max); 
+    printf("0\n");
     return 0;
 }
